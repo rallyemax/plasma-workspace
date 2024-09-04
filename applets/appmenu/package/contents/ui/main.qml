@@ -107,6 +107,11 @@ PlasmoidItem {
             Layout.fillHeight: !root.vertical
         }
 
+        KeyboardIndicator.KeyState {
+            id: altState
+            key: Qt.Key_Alt
+        }
+
         Repeater {
             id: buttonRepeater
             model: appMenuModel.visible ? appMenuModel : null
@@ -125,12 +130,6 @@ PlasmoidItem {
 
                 menuIsOpen: Plasmoid.currentIndex !== -1
                 onActivated: Plasmoid.trigger(this, index)
-
-                // So we can show mnemonic underlines only while Alt is pressed
-                KeyboardIndicator.KeyState {
-                    id: altState
-                    key: Qt.Key_Alt
-                }
             }
         }
         Item {
